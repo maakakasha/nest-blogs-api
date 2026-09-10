@@ -14,12 +14,12 @@ export class BlogsController {
 
   @Get()
   findAll() {
-    return this.blogsService.findAll();
+    return this.blogsService.getAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.blogsService.findOne(+id);
+    return this.blogsService.getById(+id);
   }
 
   @Patch(':id')

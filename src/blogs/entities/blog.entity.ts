@@ -1,4 +1,4 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 @Table
 export class Blog extends Model {
@@ -8,7 +8,11 @@ export class Blog extends Model {
   @Column
   content: string;
 
-  @Column
+  @Column({
+    type: DataType.ARRAY(DataType.STRING),
+    allowNull: true,
+    defaultValue: [],
+  })
   tags: string[];
 
   @Column
