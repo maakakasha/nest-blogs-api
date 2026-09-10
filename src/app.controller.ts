@@ -21,35 +21,35 @@ export class BlogsController {
     return `The request is valid\n${body.title}\n${body.content}`;
   }
 
-  @Get('blogs/')
-  getBlogs() {
-    console.log('Hello, from get blogs endpoint!');
-    return [];
-  }
+  // @Get('blogs/')
+  // getBlogs() {
+  //   console.log('Hello, from get blogs endpoint!');
+  //   return [];
+  // }
 
-  @Get('blogs/:id')
-  getBlog(@Body() body: GetBlogDTO) {
-    return { id: body.id };
-  }
+  // @Get('blogs/:id')
+  // getBlog(@Body() body: GetBlogDTO) {
+  //   return { id: body.id };
+  // }
 
-  // TODO: Figure out how to patch a single-doc get endpoint
-  @Get('blogs/:term')
-  filterBlogs() {
-    console.log('Hello, from get blogs endpoint!');
-    return { id: request.body.id };
-  }
+  // // TODO: Figure out how to patch a single-doc get endpoint
+  // @Get('blogs/:term')
+  // filterBlogs() {
+  //   console.log('Hello, from get blogs endpoint!');
+  //   return { id: request.body.id };
+  // }
 
-  // TODO: Figure out how to delete a single-doc get endpoint
-  @Delete('blogs/:id')
-  deleteBlog(@Body() body: GetBlogDTO) {
-    console.log('Hello, from get blogs endpoint!');
-    return { id: request.body.id };
-  }
+  // // TODO: Figure out how to delete a single-doc get endpoint
+  // @Delete('blogs/:id')
+  // deleteBlog(@Body() body: GetBlogDTO) {
+  //   console.log('Hello, from get blogs endpoint!');
+  //   return { id: request.body.id };
+  // }
 
-  // TODO: Figure out how to patch a single-doc get endpoint
-  @Patch('blogs/:id')
-  updateBlog(@Body() body: GetBlogDTO) {
-    console.log('Hello, from get blogs endpoint!');
-    return { id: request.body.id };
-  }
+  // // TODO: Figure out how to patch a single-doc get endpoint
+  // @Patch('blogs/:id')
+  // updateBlog(@Body() body: GetBlogDTO) {
+  //   console.log('Hello, from get blogs endpoint!');
+  //   return { id: request.body.id };
+  // }
 }
