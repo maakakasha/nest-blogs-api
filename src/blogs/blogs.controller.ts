@@ -25,6 +25,11 @@ export class BlogsController {
     return this.blogsService.create(createBlogDto);
   }
 
+  @Get('filter')
+  filterByTerm(@Param('term') term: string) {
+    return this.blogsService.findByTerm(term);
+  }
+
   @Get()
   findAll() {
     return this.blogsService.getAll();

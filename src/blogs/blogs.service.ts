@@ -45,4 +45,12 @@ export class BlogsService {
 
     blog?.destroy();
   }
+
+  async findByTerm(title: string) {
+    return this.blogModel.findOne({
+      where: {
+        title: `${title}`,
+      },
+    });
+  }
 }
