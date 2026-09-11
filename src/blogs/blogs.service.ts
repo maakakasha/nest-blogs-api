@@ -32,8 +32,12 @@ export class BlogsService {
     });
   }
 
-  update(id: number, updateBlogDto: UpdateBlogDto) {
-    return `This action updates a #${id} blog`;
+  async update(id: number, updateBlogDto: UpdateBlogDto) {
+    var blog = await this.getById(id);
+
+    blog?.set({ ...updateBlogDto });
+
+    blog?.save();
   }
 
   remove(id: number) {
