@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { BlogsService } from './blogs.service.js';
 import { CreateBlogDto } from './dto/create-blog.dto.js';
 import { UpdateBlogDto } from './dto/update-blog.dto.js';
@@ -6,6 +14,11 @@ import { UpdateBlogDto } from './dto/update-blog.dto.js';
 @Controller('blogs')
 export class BlogsController {
   constructor(private readonly blogsService: BlogsService) {}
+
+  @Get('hello')
+  greetings() {
+    return 'Hello, from the blogs controller';
+  }
 
   @Post()
   create(@Body() createBlogDto: CreateBlogDto) {

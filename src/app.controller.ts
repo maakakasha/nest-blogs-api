@@ -6,20 +6,20 @@ import { title } from 'node:process';
 import { IsNumber } from 'class-validator';
 import { GetBlogDTO } from './blogs/dto/get-blog-dto.js';
 
-@Controller('/api/')
+@Controller()
 export class BlogsController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('/hello/')
-  getHello(): string {
-    return this.appService.getHello();
-  }
+  // @Get('/hello/')
+  // getHello(): string {
+  //   return this.appService.getHello();
+  // }
 
   // TODO: Figure out how to patch a single-doc get endpoint
-  @Post('blogs/')
-  createBlog(@Body() body: CreateBlogDto) {
-    return `The request is valid\n${body.title}\n${body.content}`;
-  }
+  // @Post('blogs/')
+  // createBlog(@Body() body: CreateBlogDto) {
+  //   return `The request is valid\n${body.title}\n${body.content}`;
+  // }
 
   // @Get('blogs/')
   // getBlogs() {

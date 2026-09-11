@@ -1,19 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto.js';
 import { UpdateBlogDto } from './dto/update-blog.dto.js';
+import { Blog } from './entities/blog.entity.js';
+import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
 export class BlogsService {
+  constructor(
+    @InjectModel(Blog)
+    private blogModel: typeof Blog,
+  ) {}
+
   create(createBlogDto: CreateBlogDto) {
-    return 'This action adds a new blog';
+    this.blogModel.create({
+      title: createBlogDto.title,
+      content: createBlogDto.content,
+      category: createBlogDto.category,
+      tags: createBlogDto.tags,
+    });
   }
 
-  getAll() {
-    return `This action returns all blogs`;
+  getAll(): Promise<Blog[]> {
+    return Blog.findAll();
   }
 
-  getById(id: number) {
-    return `This action returns a #${id} blog`;
+  getById(id: number): Promise<Blog | null> {
+    return this.blogModel.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updateBlogDto: UpdateBlogDto) {
