@@ -40,7 +40,9 @@ export class BlogsService {
     blog?.save();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} blog`;
+  async remove(id: number) {
+    var blog = await this.getById(id);
+
+    blog?.destroy();
   }
 }
