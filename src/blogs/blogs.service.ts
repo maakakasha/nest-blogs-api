@@ -3,6 +3,7 @@ import { CreateBlogDto } from './dto/create-blog.dto.js';
 import { UpdateBlogDto } from './dto/update-blog.dto.js';
 import { Blog } from './entities/blog.entity.js';
 import { InjectModel } from '@nestjs/sequelize';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class BlogsService {
@@ -28,6 +29,19 @@ export class BlogsService {
     return this.blogModel.findOne({
       where: {
         id,
+      },
+    });
+  }
+
+
+  filterByTerm(term: string): Promise<Blog[]> {
+    return this.blogModel.findAll({
+      where: {
+        [Op.or]: [
+          { title: { [Op.iLike]: `%${term}%` } },
+          { content: { [Op.iLike]: `%${term}%` } },
+          { category: { [Op.iLike]: `%${term}%` } },
+        ],
       },
     });
   }
