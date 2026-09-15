@@ -46,10 +46,12 @@ export class BlogsService {
     blog?.destroy();
   }
 
-  async findByTerm(title: string) {
-    return this.blogModel.findOne({
+  async findByTerm(term: string) {
+    return this.blogModel.findAll({
       where: {
-        title: `${title}`,
+        title: `${term}`,
+        content: `${term}`,
+        category: `${term}`,
       },
     });
   }
